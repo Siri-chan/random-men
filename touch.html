@@ -1,0 +1,79 @@
+<!docType html>
+<html lang="en">
+<head>
+    <noscript>
+        <div class="content noscript">        
+            <h1>Get out of the 90's!</h1>
+            <hr>
+            <h2>This site needs my sh*tty Javascript in order to run properly.</h2>
+            <p>If you wish to use any of the active elements of this page,</p>
+            <p>please use a newer browser, or enable Javascript in your settings.</p>
+            <p>Conventiently, I have a list of the latest supported browser for each operating system here.</p>
+        </div>
+    </noscript>
+    <link rel="icon" type="image/png" href="./img/logo.svg">
+    <link rel="stylesheet" href="./css/bootstrap-custom.css">
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/siri.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Siri's homepage.">
+    <meta name="keywords" content="Siri, siri-chan, developer, unity, design, Github Pages, .io, siri.tv">
+    <meta name="author" content="Kira 'Siri' Kurami">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>siri-chan.github.io</title>
+</head>
+<body>
+    <div id = "h"></div>
+    <div class="content">
+        <br>
+        <br>
+        <button onclick="regenerate()" class="btn btn-warning" id="btn">Generate a Random Man</button>
+        <p></p>
+        <p><a href="https://github.com/Siri-chan/men">or see them all.</a></p>
+        <p>&nbsp</p>
+        <span id="man"></span>
+        <script>
+            var generated = false;
+            var generationCount = 0;
+            function regenerate() {
+                var man = document.getElementById("man")
+                generationCount++;
+                document.getElementById("btn").textContent = "Generate your " + formatTH(generationCount + 1) + " man?"
+                man.innerHTML = "<img src=\"" + pickMan() + "\"height=" + (window.innerHeight - window.innerHeight/3) + ">"
+                if(!generated){
+                    generated = true;
+                }
+            }
+            function pickMan(){
+                //using https://raw.githubusercontent.com/Siri-chan/men/main/<title>.jpg
+                //Math.floor is zero-inclusive
+                var num = Math.floor(Math.random() * 233);
+                if(num == 232) return "https://raw.githubusercontent.com/Siri-chan/men/numbered/232.gif";
+                if(num > 229) return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".webp";
+                if (num > 211) return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".png";
+                return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".jpg";
+            }
+            function formatTH(number){
+                switch (number % 10) {
+                    case 1:
+                        if(number == 11) return "11th"
+                        return number+"st";
+                    case 2:
+                        if (number == 12) return "12th"
+                        return number + "nd"; 
+                    case 3:
+                        if (number == 13) return "13th"
+                        return number + "rd";
+                    default:
+                        return number + "th";
+                }
+            }
+        </script>
+     </div>
+    <div id="f"></div>
+</body>
+</html>
