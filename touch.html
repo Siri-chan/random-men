@@ -48,14 +48,25 @@
                     generated = true;
                 }
             }
-            function pickMan(){
-                //using https://raw.githubusercontent.com/Siri-chan/men/main/<title>.jpg
-                //Math.floor is zero-inclusive
-                var num = Math.floor(Math.random() * 233);
-                if(num == 232) return "https://raw.githubusercontent.com/Siri-chan/men/numbered/232.gif";
-                if(num > 229) return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".webp";
-                if (num > 211) return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".png";
-                return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".jpg";
+            function pickMan() {
+                    //using https://raw.githubusercontent.com/Siri-chan/men/main/<title>.jpg
+                    //Math.floor is zero-inclusive
+                    var num = Math.floor(Math.random() * 233);
+                    console.log(num);
+                    if (num == 232) {
+                        console.log("gif");
+                        return "https://raw.githubusercontent.com/Siri-chan/men/numbered/232.gif";
+                    }
+                    if (num > 229) {
+                        console.log("webp");
+                        return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".webp";
+                    }
+                    if (num > 211) {
+                        console.log("png");
+                        return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".png";
+                    }
+                    console.log("jpg");
+                    return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".jpg";
             }
             function formatTH(number){
                 switch (number % 10) {
