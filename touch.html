@@ -43,7 +43,7 @@
                 var man = document.getElementById("man")
                 generationCount++;
                 document.getElementById("btn").textContent = "Generate your " + formatTH(generationCount + 1) + " man?"
-                man.innerHTML = "<img src=\"" + pickMan() + "\"height=" + (window.innerHeight - window.innerHeight/3) + ">"
+                man.innerHTML = "<img src=\"" + pickMan() + "\"width=" + (window.innerWidth - window.innerWidth/3) + ">"
                 if(!generated){
                     generated = true;
                 }
