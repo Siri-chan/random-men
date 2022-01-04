@@ -37,41 +37,33 @@
         <p>&nbsp</p>
         <span id="man"></span>
         <script>
-            var generated = false;
-            var generationCount = 0;
+            let generated = false;
+            let generationCount = 0;
             function regenerate() {
-                var man = document.getElementById("man")
+                let man = document.getElementById("man")
                 generationCount++;
                 document.getElementById("btn").textContent = "Generate your " + formatTH(generationCount + 1) + " man?"
-                if(isMobile2()) {
+                if(() => { try { document.createEvent("TouchEvent"); } catch (e) { return false; } return true; }) {
                     man.innerHTML = "<p>This page isn't available on Mobile right now. Contact me if you are willing to make it work, or try again on a larger device.</p>\
                     <p>This error could also occur on a touchscreen laptop. <a href=\"./touch.html\">If you're desperate for random men, and can't try another device, click any part of this sentence.</a>"; //this is thanks to scaling issues 
                     return;
                 }
                 man.innerHTML = "<img src=\"" + pickMan() + "\"height=" + (window.innerHeight - window.innerHeight/3) + ">"
-                if(!generated){
-                    generated = true;
-                }
+                if(!generated) generated = true;
             }
             function pickMan(){
+                const url = "https://raw.githubusercontent.com/Siri-chan/men/numbered/"
                 //using https://raw.githubusercontent.com/Siri-chan/men/main/<title>.jpg
                 //Math.floor is zero-inclusive
-                var num = Math.floor(Math.random() * 233);
+                let num = Math.floor(Math.random() * 233);
                 console.log(num);
-                if(num == 232){
-                console.log("gif");
-                return "https://raw.githubusercontent.com/Siri-chan/men/numbered/232.gif";
-                }
-                if(num > 229){
-                console.log("webp");
-                return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".webp";
-                }
-                if (num > 211) {
-                console.log("png");
-                return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".png";
-                }
-                console.log("jpg");
-                return "https://raw.githubusercontent.com/Siri-chan/men/numbered/" + num + ".jpg";
+                if(num == 232)
+                    return url + "232.gif";
+                if(num > 229)
+                    return url + num + ".webp";
+                if (num > 211) return url + num + ".png";
+                //else
+                return url + num + ".jpg";
             }
             function formatTH(number){
                 switch (number % 10) {
@@ -87,10 +79,6 @@
                     default:
                         return number + "th";
                 }
-            }
-            function isMobile2() {
-                try { document.createEvent("TouchEvent"); return true; }
-                catch (e) { return false; }
             }
         </script>
      </div>
