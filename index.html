@@ -18,6 +18,7 @@
     <script src="./js/bootstrap.bundle.js"></script>
     <script src="./js/bootstrap.js"></script>
     <script src="./js/siri.js"></script>
+    <script src="./js/men.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Generate Random Men">
@@ -36,51 +37,6 @@
         <p><a href="https://github.com/Siri-chan/men">or see them all.</a></p>
         <p>&nbsp</p>
         <span id="man"></span>
-        <script>
-            let generated = false;
-            let generationCount = 0;
-            function regenerate() {
-                let man = document.getElementById("man")
-                generationCount++;
-                document.getElementById("btn").textContent = "Generate your " + formatTH(generationCount + 1) + " man?"
-                if(() => { try { document.createEvent("TouchEvent"); } catch (e) { return false; } return true; }) {
-                    man.innerHTML = "<p>This page isn't available on Mobile right now. Contact me if you are willing to make it work, or try again on a larger device.</p>\
-                    <p>This error could also occur on a touchscreen laptop. <a href=\"./touch.html\">If you're desperate for random men, and can't try another device, click any part of this sentence.</a>"; //this is thanks to scaling issues 
-                    return;
-                }
-                man.innerHTML = "<img src=\"" + pickMan() + "\"height=" + (window.innerHeight - window.innerHeight/3) + ">"
-                if(!generated) generated = true;
-            }
-            function pickMan(){
-                const url = "https://raw.githubusercontent.com/Siri-chan/men/numbered/"
-                //using https://raw.githubusercontent.com/Siri-chan/men/main/<title>.jpg
-                //Math.floor is zero-inclusive
-                let num = Math.floor(Math.random() * 233);
-                console.log(num);
-                if(num == 232)
-                    return url + "232.gif";
-                if(num > 229)
-                    return url + num + ".webp";
-                if (num > 211) return url + num + ".png";
-                //else
-                return url + num + ".jpg";
-            }
-            function formatTH(number){
-                switch (number % 10) {
-                    case 1:
-                        if(number == 11) return "11th"
-                        return number+"st";
-                    case 2:
-                        if (number == 12) return "12th"
-                        return number + "nd"; 
-                    case 3:
-                        if (number == 13) return "13th"
-                        return number + "rd";
-                    default:
-                        return number + "th";
-                }
-            }
-        </script>
      </div>
     <div id="f"></div>
 </body>
